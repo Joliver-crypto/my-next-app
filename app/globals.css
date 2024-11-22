@@ -2,7 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure html and body have no margin and padding */
+html,
 body {
   margin: 0;
+  padding: 0;
+ 
+}
+
+/* Set default font */
+body {
   font-family: 'Inter', sans-serif;
+}
+
+/* Light mode styles */
+body.light {
+  background-color: #f9f9f9; /* Light background color */
+  color: #000000; /* Dark text color */
+}
+
+/* Dark mode styles */
+body.dark {
+  background-color: #1a1a1a; /* Dark background color */
+  color: #ffffff; /* Light text color */
 }

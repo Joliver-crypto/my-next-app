@@ -15,7 +15,8 @@ export function BackgroundGradientSlide() {
       <ThemeToggleButton />
 
       {/* Logo */}
-      <div className="p-4 bg-white dark:bg-gray-800 rounded-full shadow-lg">
+      <div className="p-4 shadow-lg border-4 border-black dark:border-white">
+        {/* The border color changes between black (light mode) and white (dark mode) */}
         <Image
           src="/logo.png"
           alt="Quantum Computing Club Logo"
@@ -27,11 +28,10 @@ export function BackgroundGradientSlide() {
 
       {/* Title */}
       <h1 className="text-4xl font-bold mt-6 text-black dark:text-white">
-        Welcome to the Quantum Computing Club
+        Quantum Computing at Davis
       </h1>
       <p className="text-lg text-gray-800 dark:text-gray-300 mt-4 max-w-lg">
-        Explore the frontier of quantum computing through research, workshops,
-        and innovation at UC Davis.
+        Quantum Computing at Davis (QCaD) is an extracurricular organization from the University of California Davis dedicated to education and research in the field of Quantum Computing.
       </p>
     </div>
   );

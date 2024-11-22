@@ -12,17 +12,21 @@ export function ThemeToggleButton() {
 
     if (savedTheme) {
       setTheme(savedTheme as "light" | "dark");
-      document.documentElement.classList.add(savedTheme);
+      document.body.classList.add(savedTheme);
     } else if (prefersDark) {
       setTheme("dark");
-      document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.add("light");
     }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(newTheme);
     localStorage.setItem("theme", newTheme);
   };
 

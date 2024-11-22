@@ -1,31 +1,53 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+import { Tooltip } from "react-tooltip";
+import { LampContainer } from "@/components/ui/lamp";
 
+// Team Data
 const team = [
   { name: "Jeanette Simo", role: "President", image: "/team/president.png" },
   { name: "Rishi Seri", role: "Vice President", image: "/team/vice_president.png" },
-  { name: "Liam Hofman", role: "Workshop Director", image: "/team/workshop_director.png" },
   { name: "Justin Oliver", role: "Project Manager", image: "/team/project_manager.png" },
+  { name: "Arvind Tawker", role: "Software Team Lead", image: "/team/software_team_lead.png" },
+  { name: "Liam Hofman", role: "Workshop Director", image: "/team/workshop_director.png" },
 ];
 
-export function MeetTheTeam() {
+export function MeetTheTeamWithLamp() {
   return (
-    <div className="w-screen px-10 py-20 text-center bg-gray-100">
-      <h2 className="text-4xl font-bold mb-10">Meet the Team</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <LampContainer>
+      <motion.h2
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="text-4xl font-bold mb-10 text-white"
+      >
+        Meet the Team
+      </motion.h2>
+
+      <div className="relative z-50 flex flex-row justify-center items-center gap-8">
         {team.map((member) => (
-          <div key={member.name} className="flex flex-col items-center">
+          <div key={member.name} className="relative group">
             <img
               src={member.image}
-              alt={member.role}
-              className="w-32 h-32 rounded-full shadow-lg"
+              alt={member.name}
+              className="w-32 h-32 rounded-full shadow-lg object-cover cursor-pointer border-2 border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform"
+              data-tooltip-id={`tooltip-${member.name}`}
             />
-            <h3 className="mt-4 text-xl font-bold">{member.name}</h3>
-            <p className="text-gray-600">{member.role}</p>
+            <Tooltip
+              id={`tooltip-${member.name}`}
+              content={
+                <div className="text-center">
+                  <p className="font-bold">{member.name}</p>
+                  <p className="text-gray-600 dark:text-gray-400">{member.role}</p>
+                </div>
+              }
+              className="bg-gray-800 text-white p-2 rounded shadow-md"
+            />
           </div>
         ))}
       </div>
-    </div>
+    </LampContainer>
   );
 }
